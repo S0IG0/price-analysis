@@ -13,9 +13,9 @@ export interface Data {
     value: number;
 }
 
-export const Chart: FC<Props> = ({ data, width_, n }) => {
+export const Chart: FC<Props> = ({data, width_, n}) => {
 
-    const margin = { top: 40, right: 30, bottom: 30, left: 40 };
+    const margin = {top: 40, right: 30, bottom: 30, left: 40};
     const width = width_ - margin.left - margin.right;
 
     const [height, setHeight] = useState(window.innerHeight * 0.5);
@@ -47,14 +47,18 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
 
     const line = d3
         .line()
+        // @ts-ignore
         .x((d) => xScale(d.date))
+        // @ts-ignore
         .y((d) => yScale(d.value))
         .curve(d3.curveCatmullRom);
 
     const area = d3
         .area()
+        // @ts-ignore
         .x((d) => xScale(d.date))
         .y0(yScale(0))
+        // @ts-ignore
         .y1((d) => yScale(d.value))
         .curve(d3.curveCatmullRom);
 
@@ -62,6 +66,7 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
 
     const handleMouseMove = (event) => {
         const x = xScale.invert(event.nativeEvent.offsetX - 40);
+        // @ts-ignore
         const bisectDate = d3.bisector((d) => d.date).center;
         const index = bisectDate(data, x, 0);
         setActiveIndex(index);
@@ -79,6 +84,7 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
             const start = Math.max(0, i - n);
             const end = i + 1;
             const values = data.slice(start, end);
+            // @ts-ignore
             const sum = d3.sum(values, (d) => d.value);
             return {
                 date: d.date,
@@ -92,7 +98,9 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
 
     const movingAverageLine = d3
         .line()
+        // @ts-ignore
         .x((d) => xScale(d.date))
+        // @ts-ignore
         .y((d) => yScale(d.value))
         .curve(d3.curveCatmullRom);
 
@@ -104,8 +112,9 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            <g className="axis" transform={`translate(${margin.left},${margin.top})`} ref={(ref) => d3.select(ref).call(yAxis)} />
-            <g className="axis xAxis" transform={`translate(${margin.left},${height + margin.top})`} />
+            <g className="axis" transform={`translate(${margin.left},${margin.top})`}
+               ref={(ref) => d3.select(ref).call(yAxis)}/>
+            <g className="axis xAxis" transform={`translate(${margin.left},${height + margin.top})`}/>
             <g transform={`translate(${margin.left},${margin.top})`}>
                 {data.map((item, index) => (
                     <g key={index}>
@@ -119,7 +128,7 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
                             cy={yScale(item.value)}
                             r={index === activeIndex ? 8 : 4}
                             fill="#7cb5ec"
-                            style={{ transition: `ease-out .15s` }}
+                            style={{transition: `ease-out .15s`}}
                         />
                     </g>
                 ))}
@@ -128,12 +137,14 @@ export const Chart: FC<Props> = ({ data, width_, n }) => {
                     strokeWidth={3}
                     fill="none"
                     stroke="#7cb5ec"
+                    // @ts-ignore
                     d={line(data)}
                     opacity={0.5}
                 />
                 <path
                     className="area"
                     fill="#7cb5ec"
+                    // @ts-ignore
                     d={area(data)}
                     opacity={0.1}
                 />

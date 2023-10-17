@@ -49,6 +49,7 @@ export const DualChart: FC<Props> = ({data1, data2}) => {
     const line = d3
         .line()
         .x((d, i) => xScale(i))
+        // @ts-ignore
         .y((d) => yScale(d))
         .curve(d3.curveCatmullRom);
 
@@ -56,6 +57,7 @@ export const DualChart: FC<Props> = ({data1, data2}) => {
         .area()
         .x((d, i) => xScale(i))
         .y0(height) // Задайте нижнюю границу области
+        // @ts-ignore
         .y1((d) => yScale(d))
         .curve(d3.curveCatmullRom);
 
@@ -72,6 +74,7 @@ export const DualChart: FC<Props> = ({data1, data2}) => {
                 <path
                     className="area1"
                     fill="#7cb5ec" // Цвет для первой области
+                    // @ts-ignore
                     d={area(valuesFromData1)}
                     opacity={0.1}
                 />
@@ -80,6 +83,7 @@ export const DualChart: FC<Props> = ({data1, data2}) => {
                     strokeWidth={3}
                     fill="none"
                     stroke="#7cb5ec"
+                    // @ts-ignore
                     d={line(valuesFromData1)}
                     opacity={0.5}
                 />
@@ -88,6 +92,7 @@ export const DualChart: FC<Props> = ({data1, data2}) => {
                 <path
                     className="area2"
                     fill="red" // Цвет для второй области
+                    // @ts-ignore
                     d={area(valuesFromData2)}
                     opacity={0.1}
                 />
@@ -96,6 +101,7 @@ export const DualChart: FC<Props> = ({data1, data2}) => {
                     strokeWidth={3}
                     fill="none"
                     stroke="red"
+                    // @ts-ignore
                     d={line(valuesFromData2)}
                     opacity={0.5}
                 />

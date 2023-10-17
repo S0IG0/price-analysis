@@ -35,24 +35,18 @@ services:
       - db-redis
       - db-posgres
 
-  frontend:
-    container_name: React
+  nginx:
     build:
       context: .
-      dockerfile: ./frontend/Dockerfile
+      dockerfile: ./nginx/Dockerfile
     volumes:
-      - ./frontend/src/:/frontend/src
-    depends_on:
-      - backend
-  nginx:
-    image: nginx:1.21.0-alpine
-    volumes:
+      - ./frontend/src/assets/img:/react/img
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/logs:/etc/nginx/logs
       - staticfiles:/backend/staticfiles/
     ports:
       - "80:80"
     depends_on:
-      - frontend
+      - backend
 volumes:
   staticfiles:

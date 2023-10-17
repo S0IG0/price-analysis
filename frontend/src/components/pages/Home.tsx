@@ -20,7 +20,7 @@ const Home: FC = () => {
                     <div className="product-device shadow-sm d-none d-md-block"></div>
                     <div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
                     <div className="bg-image" style={{
-                        backgroundImage: "url('src/assets/img/img.png')",
+                        backgroundImage: "url('http://localhost/react/img/img.png')",
                     }}></div>
                 </div>
 
@@ -33,7 +33,7 @@ const Home: FC = () => {
                         <div className="col">
                             <div
                                 className="card card-cover h-100 overflow-hidden rounded-4"
-                                style={{backgroundImage: "url('src/assets/img/2.png')"}}>
+                                style={{backgroundImage: "url('http://localhost/react/img/2.png')"}}>
                                 <div className="d-flex flex-column h-100 p-5 pb-3 text-light-emphasis text-shadow-1">
                                     <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Displaying parsing graph in
                                         real-time</h2>
@@ -44,7 +44,7 @@ const Home: FC = () => {
                         <div className="col">
                             <div
                                 className="card card-cover h-100 overflow-hidden text-secondary-emphasis rounded-4"
-                                style={{backgroundImage: "url('src/assets/img/1.png')"}}>
+                                style={{backgroundImage: "url('http://localhost/react/img/1.png')"}}>
                                 <div className="d-flex flex-column h-100 p-5 pb-3 text-light-emphasis text-shadow-1">
                                     <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Comparative graph</h2>
                                 </div>
@@ -55,7 +55,7 @@ const Home: FC = () => {
                         <div className="col">
                             <div
                                 className="card card-cover h-100 overflow-hidden rounded-4"
-                                style={{backgroundImage: "url('src/assets/img/3.png')"}}>
+                                style={{backgroundImage: "url('http://localhost/react/img/3.png')"}}>
                                 <div className="d-flex flex-column h-100 p-5 pb-3 text-light-emphasis text-shadow-1">
                                     <h2 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">User-friendly interface</h2>
                                 </div>
